@@ -32,7 +32,7 @@ var time:int = 0
 var playerWin:bool = false;
 var playerCards:int = 0;
 var playerCards2:int = 0;
-var level : int = 4;
+var level : int = 3;
 var rng = RandomNumberGenerator.new();
 onready var screenSize:Vector2 = get_viewport_rect().size
 
@@ -109,12 +109,12 @@ func _on_timer_timeout() -> void:
 	$ui/timer.text = str(minutos, ":", segundos)
 	
 	time -= 1
-	if time <= -2:
-		$timer.stop()
+	if time <= -1:
 		qtdVezes-=1
 		$ui/tentativas.text = str("Tentativas: ",qtdVezes)
 		time = 60
 		if qtdVezes == 0:
+			$timer.stop()
 			_end_game()
 		
 		#_end_game() - traz o finalização do jogo
